@@ -15,14 +15,12 @@ public class addTask implements Command {
 
 
 
-    public void setParams(projectsRepository cr, Task T, Integer projectID){
+    public void setParams(projectsRepository cr){
         currRepo = cr;
-        currentTask = T;
-        this.projectId = projectID;
     }
     public void removeParams(){
         currRepo = null;
-        currentTask = null;
+
     }
     @Override
     public boolean execute() {
@@ -30,9 +28,20 @@ public class addTask implements Command {
         String taskName;
         String resourceType;
         Double durationInHours;
-
+        Integer pID;
         Scanner sc  = new Scanner(System.in);
         System.out.println("Now a new Task will be added , provide the required details");
+        System.out.println("Enter ProjectID to which this task should be added");
+        pID = sc.nextInt();
+        try {
+            if (!currRepo.getProjectList().containsKey(pID)) {
+                throw new Exception();
+            }
+        }
+        catch(Exception e){
+            System.out.println("This project is not yet created");
+            return false;
+        }
         System.out.println("provide TaskID");
         ID = sc.nextInt();
         System.out.println("provide TaskName");

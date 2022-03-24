@@ -9,7 +9,7 @@ public class Project {
    @Getter
     private Integer ID;
    @Getter
-    private Set<Task> taskList = new HashSet<>();
+    private Map<Integer, Task> taskMap= new HashMap<>();
    @Setter @Getter
    private boolean completed = false;
 
@@ -19,7 +19,7 @@ public class Project {
     }
 
     public void addTask(Task t){
-        taskList.add(t);
+        taskMap.put(t.getID() , t);
     }
 
     @Setter @Getter
