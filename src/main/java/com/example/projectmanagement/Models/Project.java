@@ -6,10 +6,17 @@ import lombok.Setter;
 import java.util.*;
 
 public class Project {
-   @Getter @Setter
+   @Getter
     private Integer ID;
    @Getter
     private Set<Task> taskList = new HashSet<>();
+   @Setter @Getter
+   private boolean completed = false;
+
+    public Project(Integer ID, Schedule schedule) {
+        this.ID = ID;
+        this.schedule = schedule;
+    }
 
     public void addTask(Task t){
         taskList.add(t);
@@ -23,10 +30,10 @@ public class Project {
 
     @Getter @Setter
     private Schedule schedule ;
-    @Getter
-    public Map<Integer, List<Task>> predecessors = new HashMap<>();
-    @Setter
-    public Map<Integer, List<Task>> successors = new HashMap<>();
+    @Getter@Setter
+    private Map<Integer, List<Task>> predecessors = new HashMap<>();
+    @Getter@Setter
+    private Map<Integer, List<Task>> successors = new HashMap<>();
 
 
 

@@ -13,9 +13,9 @@ public class Task {
     @Setter @Getter
     private String resourceType;
     @Setter @Getter
-    private Integer durationInHours;
+    private Double durationInHours;
 
-    public Task(Integer ID, String taskName, String resourceType, Integer durationInHours) {
+    public Task(Integer ID, String taskName, String resourceType, Double durationInHours) {
         this.ID = ID;
         this.taskName = taskName;
         this.resourceType = resourceType;
