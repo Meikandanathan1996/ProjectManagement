@@ -6,20 +6,40 @@ import lombok.Setter;
 import java.util.List;
 
 public class Task {
-    @Setter @Getter
+   @Getter
     private Integer ID;
+   @Getter
+    private String taskName;
     @Setter @Getter
     private String resourceType;
     @Setter @Getter
     private Integer durationInHours;
-     @Getter
-    private List<Task> predecessors;
-     @Getter
-    private List<Task> successors;
-     public void addPredecessorTask(Task t){
-         predecessors.add(t);
+
+    public Task(Integer ID, String taskName, String resourceType, Integer durationInHours) {
+        this.ID = ID;
+        this.taskName = taskName;
+        this.resourceType = resourceType;
+        this.durationInHours = durationInHours;
+    }
+
+    @Override
+    public int hashCode(){
+      return this.ID;
      }
-     public void  addSuccessorTask(Task t){
-         successors.add(t);
+     @Override
+     public boolean equals(Object obj)
+     {
+
+         if(this == obj)
+             return true;
+
+         if(obj == null || obj.getClass()!= this.getClass())
+             return false;
+
+         Task other = (Task) obj;
+
+
+         return (other.taskName.equals(this.taskName)  && other.ID.equals(this.ID));
      }
+
  }
